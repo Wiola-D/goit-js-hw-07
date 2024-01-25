@@ -7,10 +7,9 @@ const gallery = document.querySelector(".gallery");
 
 for (let item of galleryItems) {
   const galleryItem = document.createElement("li");
-  galleryItem.classList.add("gallery__item");
 
   const galleryLink = document.createElement("a");
-  galleryLink.classList.add("gallery__link");
+  galleryLink.classList.add("gallery__item");
   galleryLink.href = item.original;
 
   const galleryImg = document.createElement("img");
@@ -23,6 +22,4 @@ for (let item of galleryItems) {
   gallery.append(galleryItem);
 }
 
-gallery.addEventListener("click", (event) => {
-  event.preventDefault();
-});
+var lightbox = new SimpleLightbox(".gallery a", {});
