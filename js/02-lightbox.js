@@ -15,5 +15,6 @@ const galleryImages = galleryItems
 gallery.innerHTML = galleryImages;
 
 var lightbox = new SimpleLightbox(".gallery a", {
-  captionDelay,
+  captionDelay: 250,
+  captionsData: "alt",
 });
