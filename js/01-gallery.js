@@ -4,24 +4,14 @@ console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 
-for (let item of galleryItems) {
-  const galleryItem = document.createElement("li");
-  galleryItem.classList.add("gallery__item");
+const galleryImages = galleryItems
+  .map(
+    (item) =>
+      `<li class = "gallery__item"><a class = "gallery__link" href="${item.original}"><img class = "gallery__image" src="${item.preview}" data-source="${item.original}" alt="${item.description}"/></a></li>`
+  )
+  .join("");
 
-  const galleryLink = document.createElement("a");
-  galleryLink.classList.add("gallery__link");
-  galleryLink.href = item.original;
-
-  const galleryImg = document.createElement("img");
-  galleryImg.classList.add("gallery__image");
-  galleryImg.src = item.preview;
-  galleryImg.dataset.source = item.original;
-  galleryImg.alt = item.description;
-
-  galleryLink.append(galleryImg);
-  galleryItem.append(galleryLink);
-  gallery.append(galleryItem);
-}
+gallery.innerHTML = galleryImages;
 
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
@@ -32,3 +22,11 @@ gallery.addEventListener("click", (event) => {
 
   lightbox.show();
 });
+
+/*
+lightbox.addEventListener("keydown", (e) => {
+  if (e.keyCode == 27) {
+    lightbox.close();
+  }
+});
+*/
